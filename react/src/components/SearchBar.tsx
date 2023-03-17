@@ -1,4 +1,7 @@
-import { Component } from "react";
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
+
+import { Component } from 'react';
 
 type Props = {
   onSearchTermChange: (newSearchTerm: string) => void;
@@ -12,12 +15,12 @@ class SearchBar extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      searchTerm: "",
+      searchTerm: '',
     };
   }
 
   componentDidMount() {
-    const localStorageValue = localStorage.getItem("searchValue");
+    const localStorageValue = localStorage.getItem('searchValue');
     if (localStorageValue !== null) {
       this.setState({ searchTerm: localStorageValue });
       this.props.onSearchTermChange(localStorageValue);
@@ -26,7 +29,7 @@ class SearchBar extends Component<Props, State> {
 
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevState.searchTerm !== this.state.searchTerm) {
-      localStorage.setItem("searchValue", this.state.searchTerm);
+      localStorage.setItem('searchValue', this.state.searchTerm);
       this.props.onSearchTermChange(this.state.searchTerm);
     }
   }

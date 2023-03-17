@@ -1,5 +1,7 @@
-import React from "react";
-import "../styles/Card.css";
+/* eslint-disable react/prefer-stateless-function */
+
+import React from 'react';
+import '../styles/Card.css';
 
 type CardProps = {
   cardTitle: string;
@@ -21,7 +23,9 @@ class Card extends React.Component<CardProps> {
           <p className="card__description">{cardDescription}</p>
         </div>
         <div className="card__footer">
-          <button className="card__button">{cardButton}</button>
+          <button className="card__button" type="button">
+            {cardButton}
+          </button>
         </div>
       </div>
     );

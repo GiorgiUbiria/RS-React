@@ -1,4 +1,5 @@
-import { Component } from "react";
+/* eslint-disable react/prefer-stateless-function */
+import { Component } from 'react';
 
 class NotFound extends Component {
   render() {

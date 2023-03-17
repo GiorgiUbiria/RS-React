@@ -1,7 +1,10 @@
-import { Component } from "react";
-import SearchBar from "../components/SearchBar";
-import Card from "../components/Card";
-import "../styles/Home.css";
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable @typescript-eslint/no-empty-interface */
+/* eslint-disable react/prefer-stateless-function */
+import { Component } from 'react';
+import SearchBar from '../components/SearchBar';
+import Card from '../components/Card';
+import '../styles/Home.css';
 
 type CardType = {
   title: string;
@@ -12,26 +15,26 @@ type CardType = {
 
 const cardData: CardType[] = [
   {
-    title: "First Card",
+    title: 'First Card',
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    image: "https://picsum.photos/200/300",
-    button: "Button",
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+    image: 'https://picsum.photos/200/300',
+    button: 'Button',
   },
   {
-    title: "Second Card",
+    title: 'Second Card',
 
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    image: "https://picsum.photos/200/300",
-    button: "Button",
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+    image: 'https://picsum.photos/200/300',
+    button: 'Button',
   },
   {
-    title: "Third Card",
+    title: 'Third Card',
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    image: "https://picsum.photos/200/300",
-    button: "Button",
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+    image: 'https://picsum.photos/200/300',
+    button: 'Button',
   },
 ];
 
@@ -46,7 +49,7 @@ class Home extends Component<HomeProps, HomeState> {
     super(props);
 
     this.state = {
-      searchTerm: "",
+      searchTerm: '',
     };
   }
 

@@ -1,11 +1,12 @@
-import { Component } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+/* eslint-disable react/prefer-stateless-function */
+import { Component } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
-import NotFound from "./pages/404";
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+import NotFound from './pages/404';
 
-import "./App.css";
+import './App.css';
 
 class App extends Component {
   render() {
@@ -16,10 +17,14 @@ class App extends Component {
             <nav className="nav__bar">
               <ul className="nav__list">
                 <li className="list__item">
-                  <Link to="/">Home</Link>
+                  <Link data-testid="homeLink" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li className="list__item">
-                  <Link to="/about-us">About Us</Link>
+                  <Link data-testid="aboutUsLink" to="/about-us">
+                    About Us
+                  </Link>
                 </li>
               </ul>
             </nav>
