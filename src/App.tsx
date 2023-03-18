@@ -30,8 +30,8 @@ export class App extends Component {
           </nav>
         </header>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/" element={<Home page="Home" />} />
+          <Route path="/about-us" element={<AboutUs page="About Us" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

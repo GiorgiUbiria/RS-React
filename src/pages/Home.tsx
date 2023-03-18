@@ -33,12 +33,16 @@ const cardData: CardType[] = [
   },
 ];
 
+interface HomeProps {
+  page: string;
+}
+
 interface HomeState {
   searchTerm: string;
 }
 
-class Home extends Component<HomeState> {
-  constructor(props: HomeState | Readonly<HomeState>) {
+class Home extends Component<HomeProps, HomeState> {
+  constructor(props: HomeProps) {
     super(props);
 
     this.state = {
@@ -59,6 +63,7 @@ class Home extends Component<HomeState> {
 
     return (
       <div className="home">
+        <h1> {this.props.page} </h1>
         <SearchBar onSearchTermChange={this.handleSearchTermChange} />
         <div className="cards">
           {filteredCards.map((card) => (

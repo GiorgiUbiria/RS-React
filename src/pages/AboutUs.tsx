@@ -1,9 +1,22 @@
 /* eslint-disable react/prefer-stateless-function */
 import { Component } from 'react';
 
-class AboutUs extends Component {
+interface AboutUsProps {
+  page: string;
+}
+
+class AboutUs extends Component<AboutUsProps> {
+  constructor(props: AboutUsProps) {
+    super(props);
+  }
+
   render() {
-    return <div>About Us</div>;
+    return (
+      <>
+        <h1> {this.props.page}</h1>
+        <p>On this page you will learn information about us.</p>
+      </>
+    );
   }
 }
 
