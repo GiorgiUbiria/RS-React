@@ -3,7 +3,7 @@
 import React from 'react';
 import '../styles/Card.css';
 
-type CardProps = {
+export type CardProps = {
   cardTitle: string;
   cardDescription: string;
   cardImage: string;
@@ -23,7 +23,7 @@ class Card extends React.Component<CardProps> {
           <p className="card__description">{cardDescription}</p>
         </div>
         <div className="card__footer">
-          <button className="card__button" type="button">
+          <button className="card__button" type="button" disabled>
             {cardButton}
           </button>
         </div>

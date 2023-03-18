@@ -3,7 +3,7 @@
 
 import { Component } from 'react';
 
-type Props = {
+export type SearchProps = {
   onSearchTermChange: (newSearchTerm: string) => void;
 };
 
@@ -11,8 +11,8 @@ type State = {
   searchTerm: string;
 };
 
-class SearchBar extends Component<Props, State> {
-  constructor(props: Props) {
+class SearchBar extends Component<SearchProps, State> {
+  constructor(props: SearchProps) {
     super(props);
     this.state = {
       searchTerm: '',
@@ -27,7 +27,7 @@ class SearchBar extends Component<Props, State> {
     }
   }
 
-  componentDidUpdate(prevProps: Props, prevState: State) {
+  componentDidUpdate(_prevProps: SearchProps, prevState: State) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       localStorage.setItem('searchValue', this.state.searchTerm);
       this.props.onSearchTermChange(this.state.searchTerm);
