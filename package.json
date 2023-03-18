@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix . && prettier --write ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix . && prettier --write .",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -35,11 +36,11 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "^8.0.3",
     "jsdom": "^21.1.1",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5",
     "vite": "^4.1.0",
-    "vitest": "^0.29.3"
+    "vitest": "^0.29.3",
+    "husky": "^8.0.0"
   }
 }
