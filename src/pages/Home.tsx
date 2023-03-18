@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable react/prefer-stateless-function */
 import { Component } from 'react';
 import SearchBar from '../components/SearchBar';
@@ -35,14 +33,12 @@ const cardData: CardType[] = [
   },
 ];
 
-interface HomeProps {}
-
 interface HomeState {
   searchTerm: string;
 }
 
-class Home extends Component<HomeProps, HomeState> {
-  constructor(props: HomeProps) {
+class Home extends Component<HomeState> {
+  constructor(props: HomeState | Readonly<HomeState>) {
     super(props);
 
     this.state = {
@@ -65,9 +61,9 @@ class Home extends Component<HomeProps, HomeState> {
       <div className="home">
         <SearchBar onSearchTermChange={this.handleSearchTermChange} />
         <div className="cards">
-          {filteredCards.map((card, index) => (
+          {filteredCards.map((card) => (
             <Card
-              key={index}
+              key={card.title}
               cardTitle={card.title}
               cardDescription={card.description}
               cardImage={card.image}
