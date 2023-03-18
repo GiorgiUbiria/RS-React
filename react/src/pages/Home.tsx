@@ -16,23 +16,20 @@ type CardType = {
 const cardData: CardType[] = [
   {
     title: 'First Card',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
     image: 'https://picsum.photos/200/300',
     button: 'Button',
   },
   {
     title: 'Second Card',
 
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
     image: 'https://picsum.photos/200/300',
     button: 'Button',
   },
   {
     title: 'Third Card',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
     image: 'https://picsum.photos/200/300',
     button: 'Button',
   },
