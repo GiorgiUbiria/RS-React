@@ -1,45 +1,14 @@
 /* eslint-disable react/prefer-stateless-function */
 import { Component } from 'react';
+
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
+
+import { cardData } from '../data/CardData';
+import { CardType } from '../types/CardTypes';
+import { HomeProps, HomeState } from '../types/HomeInterfaces';
+
 import '../styles/Home.css';
-
-type CardType = {
-  title: string;
-  description: string;
-  image: string;
-  button: string;
-};
-
-const cardData: CardType[] = [
-  {
-    title: 'First Card',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/200/300',
-    button: 'Button',
-  },
-  {
-    title: 'Second Card',
-
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/200/300',
-    button: 'Button',
-  },
-  {
-    title: 'Third Card',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/200/300',
-    button: 'Button',
-  },
-];
-
-interface HomeProps {
-  page: string;
-}
-
-interface HomeState {
-  searchTerm: string;
-}
 
 class Home extends Component<HomeProps, HomeState> {
   constructor(props: HomeProps) {
@@ -62,7 +31,7 @@ class Home extends Component<HomeProps, HomeState> {
     );
 
     return (
-      <div className="home">
+      <div className="main">
         <h1> {this.props.page} </h1>
         <SearchBar onSearchTermChange={this.handleSearchTermChange} />
         <div className="cards">
@@ -72,7 +41,9 @@ class Home extends Component<HomeProps, HomeState> {
               cardTitle={card.title}
               cardDescription={card.description}
               cardImage={card.image}
+              cardPrice={card.price}
               cardButton={card.button}
+              cardDate={card.date}
             />
           ))}
         </div>

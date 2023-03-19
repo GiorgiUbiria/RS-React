@@ -1,15 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prefer-stateless-function */
-
 import { Component } from 'react';
 
-export type SearchProps = {
-  onSearchTermChange: (newSearchTerm: string) => void;
-};
-
-type State = {
-  searchTerm: string;
-};
+import { SearchProps, State } from '../types/SearchBarTypes';
 
 class SearchBar extends Component<SearchProps, State> {
   constructor(props: SearchProps) {

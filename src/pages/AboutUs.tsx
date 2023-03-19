@@ -1,9 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import { Component } from 'react';
 
-interface AboutUsProps {
-  page: string;
-}
+import { AboutUsProps } from '../types/AboutUsInterfaces';
 
 class AboutUs extends Component<AboutUsProps> {
   constructor(props: AboutUsProps) {

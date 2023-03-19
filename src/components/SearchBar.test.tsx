@@ -1,7 +1,8 @@
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import SearchBar, { SearchProps } from './SearchBar';
+import SearchBar from './SearchBar';
+import { SearchProps } from '../types/SearchBarTypes';
 
 describe('SearchBar', () => {
   it('renders search bar', () => {
