@@ -19,4 +19,24 @@ export const photos = [
     title: 'Photo Four',
     url: 'https://picsum.photos/400/400',
   },
+  {
+    id: 'p5',
+    title: 'Photo Four',
+    url: 'https://picsum.photos/500/500',
+  },
+  {
+    id: 'p6',
+    title: 'Photo Four',
+    url: 'https://picsum.photos/600/600',
+  },
+  {
+    id: 'p7',
+    title: 'Photo Four',
+    url: 'https://picsum.photos/700/700',
+  },
+  {
+    id: 'p8',
+    title: 'Photo Four',
+    url: 'https://picsum.photos/800/800',
+  },
 ];

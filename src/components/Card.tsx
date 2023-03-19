@@ -14,16 +14,18 @@ class Card extends React.Component<CardProps> {
         </div>
         <div className="card__content">
           <h2 className="card__title">{cardTitle}</h2>
-          <p className="card__description">{cardDescription}</p>
-          <div className="price__tag">
-            <span className="card__price" data-testid="price">
-              <em>{cardPrice}</em>
-            </span>
-            <span>$</span>
-          </div>
-          <div className="card__date">
-            <span>Added on - </span>
-            {cardDate}
+          <div className="card__description">
+            <p className="card__description__text">{cardDescription}</p>
+            <div className="price__tag">
+              <span className="card__price" data-testid="price">
+                <em>{cardPrice}</em>
+              </span>
+              <span>$</span>
+            </div>
+            <div className="card__date">
+              <span>Added on - </span>
+              {cardDate}
+            </div>
           </div>
         </div>
         <div className="card__footer">
