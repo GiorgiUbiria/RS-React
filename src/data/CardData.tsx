@@ -1,10 +1,12 @@
 import { CardType } from '../types/CardTypes';
 
+import { photos } from './Photos';
+
 export const cardData: CardType[] = [
   {
     title: 'First Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -12,7 +14,7 @@ export const cardData: CardType[] = [
   {
     title: 'Second Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -20,7 +22,7 @@ export const cardData: CardType[] = [
   {
     title: 'Third Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -28,7 +30,7 @@ export const cardData: CardType[] = [
   {
     title: 'Fourth Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -36,7 +38,7 @@ export const cardData: CardType[] = [
   {
     title: 'Fifth Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -44,7 +46,7 @@ export const cardData: CardType[] = [
   {
     title: 'Sixth Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -52,7 +54,7 @@ export const cardData: CardType[] = [
   {
     title: 'Seventh Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),
@@ -60,7 +62,7 @@ export const cardData: CardType[] = [
   {
     title: 'Eighth Card',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/300/300',
+    images: photos,
     price: 100,
     button: 'Button',
     date: new Date().toLocaleDateString('en-US'),

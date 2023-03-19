@@ -40,7 +40,7 @@ class Home extends Component<HomeProps, HomeState> {
               key={card.title}
               cardTitle={card.title}
               cardDescription={card.description}
-              cardImage={card.image}
+              cardImages={card.images}
               cardPrice={card.price}
               cardButton={card.button}
               cardDate={card.date}

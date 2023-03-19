@@ -1,7 +1,13 @@
+export type PhotoType = {
+  id: string;
+  title: string;
+  url: string;
+};
+
 export type CardType = {
   title: string;
   description: string;
-  image: string;
+  images: PhotoType[];
   price: number;
   button: string;
   date: string;
@@ -10,7 +16,7 @@ export type CardType = {
 export type CardProps = {
   cardTitle: string;
   cardDescription: string;
-  cardImage: string;
+  cardImages: PhotoType[];
   cardPrice: number;
   cardButton: string;
   cardDate: string;
