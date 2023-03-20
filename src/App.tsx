@@ -6,6 +6,7 @@ import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import NotFound from './pages/404';
+import Forms from './pages/Forms';
 
 import './App.css';
 
@@ -26,12 +27,18 @@ export class App extends Component {
                   About Us
                 </Link>
               </li>
+              <li className="list__item">
+                <Link data-testid="formsLink" to="/forms">
+                  Forms
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
         <Routes>
           <Route path="/" element={<Home page="Home" />} />
           <Route path="/about-us" element={<AboutUs page="About Us" />} />
+          <Route path="/forms" element={<Forms page="Forms" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
