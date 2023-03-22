@@ -1,3 +1,5 @@
+import { FormCardType } from './FormCardType';
+
 export interface FormsProps {
-  page: string;
+  card: FormCardType;
 }

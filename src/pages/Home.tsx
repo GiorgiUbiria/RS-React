@@ -33,7 +33,7 @@ class Home extends Component<HomeProps, HomeState> {
     return (
       <div className="main">
         <h1> {this.props.page} </h1>
-        <SearchBar onSearchTermChange={this.handleSearchTermChange} />
+        <SearchBar onSearchTermChange={this.handleSearchTermChange} searchTerm={searchTerm} />
         <div className="cards">
           {filteredCards.map((card) => (
             <Card

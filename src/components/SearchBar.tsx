@@ -1,34 +1,26 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prefer-stateless-function */
 import { Component } from 'react';
 
-import { SearchProps, State } from '../types/SearchBarTypes';
+import { SearchBarProps, State } from '../types/SearchBarTypes';
 
-class SearchBar extends Component<SearchProps, State> {
-  constructor(props: SearchProps) {
+class SearchBar extends Component<SearchBarProps, State> {
+  constructor(props: SearchBarProps) {
     super(props);
-    this.state = {
-      searchTerm: '',
-    };
   }
 
   componentDidMount() {
     const localStorageValue = localStorage.getItem('searchValue');
     if (localStorageValue !== null) {
-      this.setState({ searchTerm: localStorageValue });
       this.props.onSearchTermChange(localStorageValue);
     }
   }
 
-  componentDidUpdate(_prevProps: SearchProps, prevState: State) {
-    if (prevState.searchTerm !== this.state.searchTerm) {
-      localStorage.setItem('searchValue', this.state.searchTerm);
-      this.props.onSearchTermChange(this.state.searchTerm);
-    }
+  componentWillUnmount() {
+    localStorage.setItem('searchValue', this.props.searchTerm);
   }
 
   handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchTerm: event.target.value });
+    this.props.onSearchTermChange(event.target.value);
   };
 
   render() {
@@ -37,7 +29,7 @@ class SearchBar extends Component<SearchProps, State> {
         <input
           type="text"
           placeholder="Search for a card"
-          value={this.state.searchTerm}
+          value={this.props.searchTerm}
           onChange={this.handleInputChange}
         />
       </div>
