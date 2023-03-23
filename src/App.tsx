@@ -3,10 +3,9 @@
 import { Component } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import Home from './pages/Home';
-import AboutUs from './pages/AboutUs';
-import NotFound from './pages/404';
-import AddForm from './pages/AddForm';
+import AppRoutes from './routes/AppRoutes';
+
+import { AppRoutesInterface } from './types/AppRoutesInterface';
 
 import './App.css';
 
@@ -36,10 +35,9 @@ export class App extends Component {
           </nav>
         </header>
         <Routes>
-          <Route path="/" element={<Home page="Home" />} />
-          <Route path="/about-us" element={<AboutUs page="About Us" />} />
-          <Route path="/add-form" element={<AddForm page="Add a Form" />} />
-          <Route path="*" element={<NotFound />} />
+          {AppRoutes.map((route: AppRoutesInterface) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
         </Routes>
       </div>
     );
