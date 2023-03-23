@@ -12,9 +12,7 @@ describe('App', () => {
       '#/'
     );
   });
-});
 
-describe('App', () => {
   it('renders about us link', () => {
     render(<WrappedApp />);
     expect(screen.getByRole('link', { name: /about us/i }) as HTMLAnchorElement).toHaveAttribute(
@@ -22,9 +20,7 @@ describe('App', () => {
       '#/about-us'
     );
   });
-});
 
-describe('App', () => {
   it('renders not found page', () => {
     render(
       <MemoryRouter initialEntries={['/this-route-does-not-exist']}>

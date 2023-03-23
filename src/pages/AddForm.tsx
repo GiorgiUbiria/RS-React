@@ -44,33 +44,66 @@ class AddForm extends Component<AddFormProps, State> {
       errors.name = 'Name is required';
     } else if (!/^[A-Z]/.test(name)) {
       errors.name = 'Name should start with an uppercase letter';
+    } else if (!/^[a-zA-Z]+$/.test(name)) {
+      errors.name = 'Name should only contain letters';
+    } else if (!/^[\x00-\x7F]+$/.test(name)) {
+      errors.name = 'Name should only be in English';
     }
+
     if (!surname) {
       errors.surname = 'Surname is required';
     } else if (!/^[A-Z]/.test(surname)) {
       errors.surname = 'Surname should start with an uppercase letter';
+    } else if (!/^[a-zA-Z]+$/.test(surname)) {
+      errors.surname = 'Surname should only contain letters';
+    } else if (!/^[\x00-\x7F]+$/.test(surname)) {
+      errors.surname = 'Surname should only be in English';
     }
+
     if (!zipCode) {
       errors.zipCode = 'ZIP Code is required';
+    } else if (!/^[1-9]\d*$/.test(zipCode)) {
+      errors.zipCode = 'ZIP Code should contain only positive integer numbers';
+    } else if (zipCode.length < 4) {
+      errors.zipCode = 'ZIP Code should be at least 4 characters long';
     }
+
     if (!birthDate) {
       errors.birthDate = 'Birth date is required';
+    } else {
+      const today = new Date();
+      const selectedDate = new Date(birthDate);
+      if (selectedDate >= today) {
+        errors.birthDate = 'Birth date should be before today';
+      }
     }
+
     if (!deliveryDate) {
       errors.deliveryDate = 'Delivery date is required';
+    } else {
+      const today = new Date();
+      const selectedDate = new Date(deliveryDate);
+      if (selectedDate <= today) {
+        errors.deliveryDate = 'Delivery date should be after today';
+      }
     }
+
     if (!city) {
       errors.city = 'City is required';
     }
+
     if (!consent) {
       errors.consent = 'Consent is required';
     }
+
     if (!gender) {
       errors.gender = 'Gender is required';
     }
+
     if (!file) {
       errors.file = 'Profile picture is required';
     }
+
     if (Object.keys(errors).length > 0) {
       this.setState({ errors });
       return;
@@ -105,6 +138,7 @@ class AddForm extends Component<AddFormProps, State> {
         <form
           style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
           onSubmit={this.handleSubmit}
+          data-testid="form"
         >
           <div className="names" style={{ display: 'flex', gap: '0.5rem' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -152,23 +186,24 @@ class AddForm extends Component<AddFormProps, State> {
           <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <label htmlFor="male">
-                <input type="radio" value="Male" id="male" name="gender" ref={this.maleRef} />
-                Male{' '}
+                Male <input type="radio" value="Male" id="male" name="gender" ref={this.maleRef} />
               </label>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <label htmlFor="female">
-                <input type="radio" value="Female" id="female" name="gender" ref={this.femaleRef} />
                 Female{' '}
+                <input type="radio" value="Female" id="female" name="gender" ref={this.femaleRef} />
               </label>
             </div>
 
             {errors.gender && <span style={{ color: 'red' }}>{errors.gender}</span>}
           </div>
 
-          <label htmlFor="consent">Consent</label>
-          <input type="checkbox" id="consent" ref={this.consentRef} />
+          <label htmlFor="consent">
+            I consent to my personal data{' '}
+            <input type="checkbox" id="consent" ref={this.consentRef} />
+          </label>
 
           {errors.consent && <span style={{ color: 'red' }}>{errors.consent}</span>}
 
