@@ -20,6 +20,7 @@ class Forms extends Component<FormsProps> {
           <p>{card.birthDate}</p>
           <p>{card.deliveryDate}</p>
           <p>{card.city}</p>
+          <p>{card.gender}</p>
         </div>
       </div>
     );

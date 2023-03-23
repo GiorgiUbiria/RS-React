@@ -15,7 +15,8 @@ class AddForm extends Component<AddFormProps, State> {
   deliveryDateRef = createRef<HTMLInputElement>();
   cityRef = createRef<HTMLSelectElement>();
   consentRef = createRef<HTMLInputElement>();
-  genderRef = createRef<HTMLInputElement>();
+  maleRef = createRef<HTMLInputElement>();
+  femaleRef = createRef<HTMLInputElement>();
   fileRef = createRef<HTMLInputElement>();
 
   state: State = {
@@ -33,7 +34,9 @@ class AddForm extends Component<AddFormProps, State> {
     const deliveryDate = this.deliveryDateRef.current?.value as string;
     const city = this.cityRef.current?.value as string;
     const consent = this.consentRef.current?.checked as boolean;
-    const gender = this.genderRef.current?.value as string;
+    const gender = this.maleRef.current?.checked
+      ? (this.maleRef.current?.value as string)
+      : (this.femaleRef.current?.value as string);
     const file = this.fileRef.current?.files?.[0] as File;
 
     const errors = {} as ErrorType;
@@ -100,18 +103,24 @@ class AddForm extends Component<AddFormProps, State> {
       <>
         <h1>{this.props.page}</h1>
         <form
-          style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
           onSubmit={this.handleSubmit}
         >
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" ref={this.nameRef} />
+          <div className="names" style={{ display: 'flex', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" ref={this.nameRef} />
 
-          {errors.name && <span style={{ color: 'red' }}>{errors.name}</span>}
+              {errors.name && <span style={{ color: 'red' }}>{errors.name}</span>}
+            </div>
 
-          <label htmlFor="surname">Surname</label>
-          <input type="text" id="surname" ref={this.surnameRef} />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label htmlFor="surname">Surname</label>
+              <input type="text" id="surname" ref={this.surnameRef} />
 
-          {errors.surname && <span style={{ color: 'red' }}>{errors.surname}</span>}
+              {errors.surname && <span style={{ color: 'red' }}>{errors.surname}</span>}
+            </div>
+          </div>
 
           <label htmlFor="zipCode">ZIP Code</label>
           <input type="text" id="zipCode" ref={this.zipCodeRef} />
@@ -128,7 +137,7 @@ class AddForm extends Component<AddFormProps, State> {
 
           {errors.deliveryDate && <span style={{ color: 'red' }}>{errors.deliveryDate}</span>}
 
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">City</label>
           <select id="country" ref={this.cityRef}>
             <option value="">Select city</option>
             {cities.map((city: CityType) => (
@@ -140,10 +149,23 @@ class AddForm extends Component<AddFormProps, State> {
 
           {errors.city && <span style={{ color: 'red' }}>{errors.city}</span>}
 
-          <label htmlFor="male"> Male</label>
-          <input type="radio" value="Male" id="male" ref={this.genderRef} />
+          <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label htmlFor="male">
+                <input type="radio" value="Male" id="male" name="gender" ref={this.maleRef} />
+                Male{' '}
+              </label>
+            </div>
 
-          {errors.gender && <span style={{ color: 'red' }}>{errors.gender}</span>}
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label htmlFor="female">
+                <input type="radio" value="Female" id="female" name="gender" ref={this.femaleRef} />
+                Female{' '}
+              </label>
+            </div>
+
+            {errors.gender && <span style={{ color: 'red' }}>{errors.gender}</span>}
+          </div>
 
           <label htmlFor="consent">Consent</label>
           <input type="checkbox" id="consent" ref={this.consentRef} />
@@ -160,9 +182,11 @@ class AddForm extends Component<AddFormProps, State> {
 
         <div>
           <h2>Form Cards</h2>
-          {this.state.cards.map((card: FormCardType) => (
-            <FormCard key={card.name} card={card} />
-          ))}
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {this.state.cards.map((card: FormCardType) => (
+              <FormCard key={card.name} card={card} />
+            ))}
+          </div>
         </div>
       </>
     );
