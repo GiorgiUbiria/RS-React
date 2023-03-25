@@ -21,6 +21,14 @@ describe('App', () => {
     );
   });
 
+  it('render add form link', () => {
+    render(<WrappedApp />);
+    expect(screen.getByRole('link', { name: /add form/i }) as HTMLAnchorElement).toHaveAttribute(
+      'href',
+      '#/add-form'
+    );
+  });
+
   it('renders not found page', () => {
     render(
       <MemoryRouter initialEntries={['/this-route-does-not-exist']}>

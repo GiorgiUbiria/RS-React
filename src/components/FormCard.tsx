@@ -13,7 +13,7 @@ class Forms extends Component<FormsProps> {
     return (
       <div key={card.name} className="form-card">
         <img src={URL.createObjectURL(card.file)} alt="image" className="card-image" />
-        <div className="card-body">
+        <div className="card-body" data-testid="form-card">
           <p> Name: {card.name} </p>
           <p> Surname: {card.surname} </p>
           <p> Zip Code: {card.zipCode}</p>
