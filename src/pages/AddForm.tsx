@@ -5,7 +5,6 @@ import { CityType } from '../types/CityType';
 import { ErrorType } from '../types/ErrorType';
 import { FormCardType } from '../types/FormCardType';
 import { AddFormProps, State } from '../types/AddFormInterface';
-import '../styles/FormCard.css';
 
 class AddForm extends Component<AddFormProps, State> {
   nameRef = createRef<HTMLInputElement>();
@@ -27,9 +26,9 @@ class AddForm extends Component<AddFormProps, State> {
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const name = this.nameRef.current?.value as string;
-    const surname = this.surnameRef.current?.value as string;
-    const zipCode = this.zipCodeRef.current?.value as string;
+    const name = this.nameRef.current?.value.trim() as string;
+    const surname = this.surnameRef.current?.value.trim() as string;
+    const zipCode = this.zipCodeRef.current?.value.trim() as string;
     const birthDate = this.birthDateRef.current?.value as string;
     const deliveryDate = this.deliveryDateRef.current?.value as string;
     const city = this.cityRef.current?.value as string;
@@ -62,8 +61,8 @@ class AddForm extends Component<AddFormProps, State> {
 
     if (!zipCode) {
       errors.zipCode = 'ZIP Code is required';
-    } else if (!/^[1-9]\d*$/.test(zipCode)) {
-      errors.zipCode = 'ZIP Code should contain only positive integer numbers';
+    } else if (!/^[0-9]\d*$/.test(zipCode)) {
+      errors.zipCode = 'ZIP Code should contain only positive integer numbers or null';
     } else if (zipCode.length < 4) {
       errors.zipCode = 'ZIP Code should be at least 4 characters long';
     }
@@ -212,7 +211,17 @@ class AddForm extends Component<AddFormProps, State> {
 
           {errors.file && <span style={{ color: 'red' }}>{errors.file}</span>}
 
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: 'white',
+              border: '1px solid black',
+              borderRadius: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            Submit
+          </button>
         </form>
 
         <div>

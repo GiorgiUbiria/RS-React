@@ -9,12 +9,15 @@ import { AppRoutesInterface } from './types/AppRoutesInterface';
 
 import './App.css';
 
+import RSLogo from './assets/logo_rs.svg';
+
 export class App extends Component {
   render() {
     return (
       <div className="main__app">
-        <header>
+        <header className="main_header">
           <nav className="nav__bar">
+            <img className="rs-logo" src={RSLogo} alt="logo" />
             <ul className="nav__list">
               <li className="list__item">
                 <Link data-testid="homeLink" to="/">

@@ -55,4 +55,9 @@
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
+  width: 50%;
+}
+
+.card__button:hover {
+  background-color: #e5e5e5;
 }

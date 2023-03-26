@@ -3,6 +3,8 @@ import { Component } from 'react';
 
 import { FormsProps } from '../types/FormsInterface';
 
+import styles from '../styles/FormCard.module.css';
+
 class Forms extends Component<FormsProps> {
   constructor(props: FormsProps) {
     super(props);
@@ -10,17 +12,19 @@ class Forms extends Component<FormsProps> {
 
   render() {
     const { card } = this.props;
+
     return (
-      <div key={card.name} className="form-card">
-        <img src={URL.createObjectURL(card.file)} alt="image" className="card-image" />
-        <div className="card-body" data-testid="form-card">
-          <p> Name: {card.name} </p>
-          <p> Surname: {card.surname} </p>
-          <p> Zip Code: {card.zipCode}</p>
-          <p>Date of Birth: {card.birthDate}</p>
-          <p>Date of Delivery: {card.deliveryDate}</p>
-          <p>State of Residence: {card.city}</p>
-          <p>{card.gender}</p>
+      <div className={styles.card}>
+        <h2 className={styles.card_title}>
+          {card.name} {card.surname}{' '}
+        </h2>
+        <img src={URL.createObjectURL(card.file)} alt="image" className={styles.card_img} />
+        <div className={styles.card_desc}>
+          <p> ZIP Code: {card.zipCode} </p>
+          <p> Date of Birth: {card.birthDate} </p>
+          <p> Date of Delivery: {card.deliveryDate} </p>
+          <p> Place of Residence: {card.city} </p>
+          <p> Gender: {card.gender} </p>
         </div>
       </div>
     );

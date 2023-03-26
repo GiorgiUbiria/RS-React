@@ -21,22 +21,22 @@ export const photos = [
   },
   {
     id: 'p5',
-    title: 'Photo Four',
+    title: 'Photo Five',
     url: 'https://picsum.photos/500/500',
   },
   {
     id: 'p6',
-    title: 'Photo Four',
+    title: 'Photo Six',
     url: 'https://picsum.photos/600/600',
   },
   {
     id: 'p7',
-    title: 'Photo Four',
+    title: 'Photo Seven',
     url: 'https://picsum.photos/700/700',
   },
   {
     id: 'p8',
-    title: 'Photo Four',
+    title: 'Photo Eight',
     url: 'https://picsum.photos/800/800',
   },
 ];

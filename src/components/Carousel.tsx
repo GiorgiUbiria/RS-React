@@ -10,6 +10,11 @@ class Carousel extends Component<ICarouselProps, IAppState> {
     this.state = { currentIndex: 0 };
   }
 
+  componentDidMount() {
+    const randomIndex = Math.floor(Math.random() * this.props?.photos?.length);
+    this.setState({ currentIndex: randomIndex });
+  }
+
   next = () => {
     this.setState((prevState) => ({
       currentIndex: (prevState.currentIndex + 1) % this.props?.photos?.length,
@@ -30,15 +35,16 @@ class Carousel extends Component<ICarouselProps, IAppState> {
   };
 
   render() {
+    const { photos } = this.props;
     const { currentIndex } = this.state;
 
     return (
       <div data-testid="carousel">
         <div className="slider-container">
-          {this.props.photos?.map((photo) => (
+          {photos?.map((photo) => (
             <div
               key={photo.id}
-              className={this.props?.photos[currentIndex]?.id === photo.id ? 'fade' : 'slide fade'}
+              className={photos[currentIndex]?.id === photo.id ? 'fade' : 'slide fade'}
             >
               <img src={photo.url} alt={photo.title} className="photo" />
               <div className="caption">{photo.title}</div>
@@ -55,11 +61,11 @@ class Carousel extends Component<ICarouselProps, IAppState> {
         </div>
 
         <div className="dots">
-          {this.props.photos?.map((photo) => (
+          {photos?.map((photo) => (
             <span
               key={photo.id}
-              className={this.props.photos[currentIndex]?.id === photo.id ? 'dot active' : 'dot'}
-              onClick={() => this.setCurrentIndex(this.props?.photos?.indexOf(photo))}
+              className={photos[currentIndex]?.id === photo.id ? 'dot active' : 'dot'}
+              onClick={() => this.setCurrentIndex(photos?.indexOf(photo))}
             ></span>
           ))}
         </div>

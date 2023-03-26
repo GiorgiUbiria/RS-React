@@ -13,7 +13,8 @@
 
 .photo {
   width: 100%;
-  max-height: 350px;
+  max-height: 250px;
+  object-fit: fill;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
 }
 
