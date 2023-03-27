@@ -30,8 +30,8 @@ export class App extends Component {
                 </Link>
               </li>
               <li className="list__item">
-                <Link data-testid="formsLink" to="/add-form">
-                  Add Form
+                <Link data-testid="formsLink" to="/forms">
+                  Forms
                 </Link>
               </li>
             </ul>

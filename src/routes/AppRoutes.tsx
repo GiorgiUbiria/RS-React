@@ -15,8 +15,8 @@ const AppRoutes: AppRoutesInterface[] = [
     element: <AboutUs page="About Us" />,
   },
   {
-    path: '/add-form',
-    element: <AddForm page="Add a Form" />,
+    path: '/forms',
+    element: <AddForm page="Forms" />,
   },
   {
     path: '*',

@@ -7,6 +7,15 @@ import { FormCardType } from '../types/FormCardType';
 import { AddFormProps, State } from '../types/AddFormInterface';
 
 class AddForm extends Component<AddFormProps, State> {
+  constructor(props: AddFormProps) {
+    super(props);
+    this.state = {
+      cards: [] as FormCardType[],
+      errors: {} as ErrorType,
+      isFormSubmitted: false as boolean,
+    };
+  }
+
   nameRef = createRef<HTMLInputElement>();
   surnameRef = createRef<HTMLInputElement>();
   zipCodeRef = createRef<HTMLInputElement>();
@@ -17,11 +26,6 @@ class AddForm extends Component<AddFormProps, State> {
   maleRef = createRef<HTMLInputElement>();
   femaleRef = createRef<HTMLInputElement>();
   fileRef = createRef<HTMLInputElement>();
-
-  state: State = {
-    cards: [] as FormCardType[],
-    errors: {} as ErrorType,
-  };
 
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -104,7 +108,7 @@ class AddForm extends Component<AddFormProps, State> {
     }
 
     if (Object.keys(errors).length > 0) {
-      this.setState({ errors });
+      this.setState({ errors, isFormSubmitted: false });
       return;
     }
 
@@ -123,17 +127,23 @@ class AddForm extends Component<AddFormProps, State> {
     this.setState((prevState: State) => ({
       cards: [...prevState.cards, newCard],
       errors: {},
+      isFormSubmitted: true,
     }));
+
+    //if form is submitted successfully, reset the form and set isFormSubmitted to false (after 1 second)
+    setTimeout(() => {
+      this.setState({ isFormSubmitted: false });
+    }, 1000);
 
     const form = e.target as HTMLFormElement;
     form.reset();
   };
 
   render() {
-    const { errors } = this.state;
+    const { errors, isFormSubmitted } = this.state;
     return (
       <>
-        <h1>{this.props.page}</h1>
+        <h1> {this.props.page}</h1>
         <form
           style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
           onSubmit={this.handleSubmit}
@@ -223,6 +233,8 @@ class AddForm extends Component<AddFormProps, State> {
             Submit
           </button>
         </form>
+
+        {isFormSubmitted && <span style={{ color: 'green' }}>Form submitted successfully!</span>}
 
         <div>
           <h2>Form Cards</h2>

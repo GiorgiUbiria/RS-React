@@ -8,4 +8,5 @@ export interface AddFormProps {
 export type State = {
   cards: FormCardType[];
   errors: ErrorType;
+  isFormSubmitted: boolean;
 };

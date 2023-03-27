@@ -23,9 +23,9 @@ describe('App', () => {
 
   it('render add form link', () => {
     render(<WrappedApp />);
-    expect(screen.getByRole('link', { name: /add form/i }) as HTMLAnchorElement).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /forms/i }) as HTMLAnchorElement).toHaveAttribute(
       'href',
-      '#/add-form'
+      '#/forms'
     );
   });
 
