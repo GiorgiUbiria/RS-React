@@ -10,7 +10,7 @@ import { HomeProps } from '../types/HomeInterfaces';
 import '../styles/Home.css';
 
 const Home = (props: HomeProps) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   function handleSearchTermChange(newSearchTerm: string) {
     setSearchTerm(newSearchTerm);

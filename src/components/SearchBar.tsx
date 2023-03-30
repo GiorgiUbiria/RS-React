@@ -5,21 +5,21 @@ import { SearchBarProps } from '../types/SearchBarTypes';
 import Glass from '../assets/magnifying-glass.svg';
 import '../styles/SearchBar.css';
 
-function SearchBar(props: SearchBarProps) {
+function SearchBar({ onSearchTermChange, searchTerm }: SearchBarProps) {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onSearchTermChange(event.target.value);
+  };
+
   useEffect(() => {
     const localStorageValue = localStorage.getItem('searchValue');
     if (localStorageValue !== null) {
-      props.onSearchTermChange(localStorageValue);
+      onSearchTermChange(localStorageValue);
     }
+  }, []);
 
-    return () => {
-      localStorage.setItem('searchValue', props.searchTerm);
-    };
-  }, [props]);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.onSearchTermChange(event.target.value);
-  };
+  useEffect(() => {
+    localStorage.setItem('searchValue', searchTerm);
+  }, [searchTerm]);
 
   return (
     <div>
@@ -27,7 +27,7 @@ function SearchBar(props: SearchBarProps) {
         className="search-bar"
         type="text"
         placeholder="Search for a card"
-        value={props.searchTerm}
+        value={searchTerm}
         onChange={handleInputChange}
       />
       <img className="search-icon" src={Glass} alt="Search" />
