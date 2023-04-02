@@ -1,10 +1,12 @@
-/* eslint-disable react/prefer-stateless-function */
-import { Component } from 'react';
+import { AboutUsProps } from '../types/AboutUsInterfaces';
 
-class AboutUs extends Component {
-  render() {
-    return <div>About Us</div>;
-  }
-}
+const AboutUs = (props: AboutUsProps) => {
+  return (
+    <>
+      <h1> {props.page}</h1>
+      <p>On this page you will learn information about us.</p>
+    </>
+  );
+};
 
 export default AboutUs;

@@ -1,55 +1,38 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
+import { useEffect } from 'react';
 
-import { Component } from 'react';
+import { SearchBarProps } from '../types/SearchBarTypes';
 
-type Props = {
-  onSearchTermChange: (newSearchTerm: string) => void;
-};
+import Glass from '../assets/magnifying-glass.svg';
+import '../styles/SearchBar.css';
 
-type State = {
-  searchTerm: string;
-};
-
-class SearchBar extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      searchTerm: '',
-    };
-  }
-
-  componentDidMount() {
-    const localStorageValue = localStorage.getItem('searchValue');
-    if (localStorageValue !== null) {
-      this.setState({ searchTerm: localStorageValue });
-      this.props.onSearchTermChange(localStorageValue);
-    }
-  }
-
-  componentDidUpdate(prevProps: Props, prevState: State) {
-    if (prevState.searchTerm !== this.state.searchTerm) {
-      localStorage.setItem('searchValue', this.state.searchTerm);
-      this.props.onSearchTermChange(this.state.searchTerm);
-    }
-  }
-
-  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchTerm: event.target.value });
+function SearchBar({ onSearchTermChange, searchTerm }: SearchBarProps) {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onSearchTermChange(event.target.value);
   };
 
-  render() {
-    return (
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search for a card"
-          value={this.state.searchTerm}
-          onChange={this.handleInputChange}
-        />
-      </div>
-    );
-  }
+  useEffect(() => {
+    const localStorageValue = localStorage.getItem('searchValue');
+    if (localStorageValue !== null) {
+      onSearchTermChange(localStorageValue);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('searchValue', searchTerm);
+  }, [searchTerm]);
+
+  return (
+    <div>
+      <input
+        className="search-bar"
+        type="text"
+        placeholder="Search for a card"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <img className="search-icon" src={Glass} alt="Search" />
+    </div>
+  );
 }
 
 export default SearchBar;

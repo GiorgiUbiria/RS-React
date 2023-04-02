@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
-import { WrappedApp, App } from './App';
+import WrappedApp, { App } from './App';
 
 describe('App', () => {
   it('renders home link', () => {
@@ -12,9 +12,7 @@ describe('App', () => {
       '#/'
     );
   });
-});
 
-describe('App', () => {
   it('renders about us link', () => {
     render(<WrappedApp />);
     expect(screen.getByRole('link', { name: /about us/i }) as HTMLAnchorElement).toHaveAttribute(
@@ -22,9 +20,15 @@ describe('App', () => {
       '#/about-us'
     );
   });
-});
 
-describe('App', () => {
+  it('render add form link', () => {
+    render(<WrappedApp />);
+    expect(screen.getByRole('link', { name: /forms/i }) as HTMLAnchorElement).toHaveAttribute(
+      'href',
+      '#/forms'
+    );
+  });
+
   it('renders not found page', () => {
     render(
       <MemoryRouter initialEntries={['/this-route-does-not-exist']}>

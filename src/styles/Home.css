@@ -1,13 +1,18 @@
-.home {
+.main {
   background: #fff;
   color: #000;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 .cards {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
 }

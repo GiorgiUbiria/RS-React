@@ -1,83 +1,44 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @typescript-eslint/no-empty-interface */
-/* eslint-disable react/prefer-stateless-function */
-import { Component } from 'react';
+import { useState } from 'react';
+
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
+
+import { cardData } from '../data/CardData';
+import { CardType } from '../types/CardTypes';
+import { HomeProps } from '../types/HomeInterfaces';
+
 import '../styles/Home.css';
 
-type CardType = {
-  title: string;
-  description: string;
-  image: string;
-  button: string;
-};
+const Home = (props: HomeProps) => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
-const cardData: CardType[] = [
-  {
-    title: 'First Card',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/200/300',
-    button: 'Button',
-  },
-  {
-    title: 'Second Card',
-
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/200/300',
-    button: 'Button',
-  },
-  {
-    title: 'Third Card',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-    image: 'https://picsum.photos/200/300',
-    button: 'Button',
-  },
-];
-
-interface HomeProps {}
-
-interface HomeState {
-  searchTerm: string;
-}
-
-class Home extends Component<HomeProps, HomeState> {
-  constructor(props: HomeProps) {
-    super(props);
-
-    this.state = {
-      searchTerm: '',
-    };
+  function handleSearchTermChange(newSearchTerm: string) {
+    setSearchTerm(newSearchTerm);
   }
 
-  handleSearchTermChange = (newSearchTerm: string) => {
-    this.setState({ searchTerm: newSearchTerm });
-  };
+  const filteredCards = cardData.filter((card: CardType) =>
+    card.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  render() {
-    const { searchTerm } = this.state;
-
-    const filteredCards = cardData.filter((card: CardType) =>
-      card.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    return (
-      <div className="home">
-        <SearchBar onSearchTermChange={this.handleSearchTermChange} />
-        <div className="cards">
-          {filteredCards.map((card, index) => (
-            <Card
-              key={index}
-              cardTitle={card.title}
-              cardDescription={card.description}
-              cardImage={card.image}
-              cardButton={card.button}
-            />
-          ))}
-        </div>
+  return (
+    <div className="main">
+      <h1> {props.page} </h1>
+      <SearchBar onSearchTermChange={handleSearchTermChange} searchTerm={searchTerm} />
+      <div className="cards">
+        {filteredCards.map((card) => (
+          <Card
+            key={card.title}
+            cardTitle={card.title}
+            cardDescription={card.description}
+            cardImages={card.images}
+            cardPrice={card.price}
+            cardButton={card.button}
+            cardDate={card.date}
+          />
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Home;
